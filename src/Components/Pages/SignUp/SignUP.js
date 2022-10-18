@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/UserContext";
 const SignUP = () => {
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handlSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
   return (
     <div className="mx-auto space-y-8 container mt-24">
       <div className="text-5xl font-bold">
@@ -35,6 +59,7 @@ const SignUP = () => {
       </div>
       <div className="text-start ">
         <form
+          onSubmit={handlSubmit}
           className="flex flex-col items-center space-y-6 text-sm"
           action=""
         >
@@ -44,6 +69,7 @@ const SignUP = () => {
             </span>
             <input
               type="email"
+              name="email"
               className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
               placeholder="example@example.com"
             />
@@ -54,9 +80,10 @@ const SignUP = () => {
             </span>
 
             <input
-              type="email"
+              type="password"
+              name="password"
               className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
-              placeholder="example@example.com"
+              placeholder="password must be 6 character or more"
             />
           </label>
           <button

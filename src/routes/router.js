@@ -6,6 +6,7 @@ import LogIn from "../Components/Pages/LogIn/LogIn";
 import SignUp from "../Components/Pages/SignUp/SignUP";
 import Payment from "../Components/Payment/Payment";
 import Root from "../Layout/Root";
+import PrivateRoutes from "./PrivateRoutes";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/payment",
-        element: <Payment></Payment>,
+        element: (
+          <PrivateRoutes>
+            <Payment></Payment>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/signup",

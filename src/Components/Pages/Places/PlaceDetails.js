@@ -64,7 +64,7 @@ const PlaceDetails = () => {
                     The doctor said
                   </h6>
                   <button
-                    onclick={handleBooking}
+                    onClick={handleBooking}
                     className="bg-violet-700 text-white py-1 px-6 rounded"
                   >
                     Book Now

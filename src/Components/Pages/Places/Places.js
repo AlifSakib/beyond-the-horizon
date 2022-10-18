@@ -1,11 +1,11 @@
 import React from "react";
+import PlaceDetails from "./PlaceDetails";
 
 const Places = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <div>
-        <h1>Recomended Places to stay</h1>
-        <p>Popular places to stay that we recommends for you</p>
+        <PlaceDetails></PlaceDetails>
       </div>
     </div>
   );

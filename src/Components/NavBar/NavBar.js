@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,24 +34,24 @@ const Header = () => {
           </a>
           <ul class="flex items-center hidden space-x-8 lg:flex">
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 aria-label="Our product"
                 title="Our product"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/"
+              <Link
+                to="/booking"
                 aria-label="Our product"
                 title="Our product"
                 class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
-                Order Review
-              </a>
+                Booking Review
+              </Link>
             </li>
             <li>
               <a
@@ -73,14 +74,14 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a
-                href="/"
+              <Link
+                to="/signup"
                 class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none rounded-full"
                 aria-label="Sign up"
                 title="Sign up"
               >
                 Sign up
-              </a>
+              </Link>
             </li>
           </ul>
           <div class="lg:hidden">

@@ -1,10 +1,11 @@
 import React from "react";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const LogIn = () => {
   return (
-    <div className="mx-auto space-y-8 container">
+    <div className="mx-auto space-y-8 container mt-24">
       <div className="text-5xl font-bold">
-        <h1>Signup</h1>
+        <h1>Login</h1>
       </div>
       <div className="flex flex-col items-center space-y-4">
         <div className=" flex justify-around items-center w-96 py-2 rounded-lg hover:-translate-y-1 transition-transform cursor-pointer bg-blue-50 ease ">
@@ -58,7 +59,7 @@ const LogIn = () => {
             </div>
             <input
               type="email"
-              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1"
+              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
               placeholder="example@example.com"
             />
           </label>
@@ -72,7 +73,15 @@ const LogIn = () => {
           </button>
         </form>
         <div className="text-center mt-10 text-gray-700">
-          <p>New user? Create an account</p>
+          <p>
+            New user?{" "}
+            <Link
+              to="/signup"
+              className="underline underline-offset-4 text-blue-700 hover:text-violet-700"
+            >
+              Create an account
+            </Link>
+          </p>
         </div>
       </div>
     </div>

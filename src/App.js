@@ -1,14 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import { Content } from "./Components/Header/Content/Content";
-import NavBar from "./Components/NavBar/NavBar";
-import SignUP from "./Components/Pages/SignUp/SignUP";
+import { router } from "./routes/router";
 
 function App() {
   return (
     <div className="App font-Poppins">
-      <NavBar></NavBar>
-      <SignUP></SignUP>
-      <Content></Content>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

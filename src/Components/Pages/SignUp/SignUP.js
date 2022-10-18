@@ -1,8 +1,9 @@
 import React from "react";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const SignUP = () => {
   return (
-    <div className="mx-auto space-y-8 container">
+    <div className="mx-auto space-y-8 container mt-24">
       <div className="text-5xl font-bold">
         <h1>Signup</h1>
       </div>
@@ -54,7 +55,7 @@ const SignUP = () => {
 
             <input
               type="email"
-              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1"
+              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
               placeholder="example@example.com"
             />
           </label>
@@ -68,7 +69,15 @@ const SignUP = () => {
           </button>
         </form>
         <div className="text-center mt-10 text-gray-700">
-          <p>Already have an account ? Login</p>
+          <p>
+            Already have an account ?{" "}
+            <Link
+              to="/login"
+              className="underline underline-offset-4 text-blue-700 hover:text-violet-700"
+            >
+              Login
+            </Link>
+          </p>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserContext";
 const LogIn = () => {
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -32,6 +32,9 @@ const LogIn = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   return (

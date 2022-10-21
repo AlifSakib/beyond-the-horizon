@@ -1,11 +1,16 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { createContext } from "react";
+import { Outlet, useLoaderData } from "react-router-dom";
 import NavBar from "../Components/NavBar/NavBar";
+
+export const PlacesContext = createContext();
 const Root = () => {
+  const places = useLoaderData();
   return (
     <div>
-      <NavBar></NavBar>
-      <Outlet></Outlet>
+      <PlacesContext.Provider value={places}>
+        <NavBar></NavBar>
+        <Outlet></Outlet>
+      </PlacesContext.Provider>
     </div>
   );
 };

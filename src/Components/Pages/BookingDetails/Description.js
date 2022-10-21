@@ -9,7 +9,8 @@ import {
   FaStar,
   FaUser,
 } from "react-icons/fa";
-const Description = () => {
+const Description = ({ place }) => {
+  const { location } = place;
   return (
     <div className=" border-4 border-slate-200 rounded-lg">
       <div className="py-4">
@@ -42,7 +43,7 @@ const Description = () => {
               <FaMapMarkerAlt></FaMapMarkerAlt>
             </div>
             <div>
-              <p>Tokyo, Japan</p>
+              <p>{location}</p>
             </div>
           </div>
         </div>

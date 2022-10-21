@@ -1,18 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Cover from "./Cover";
 import Description from "./Description";
 import Reserve from "./Reserve";
 
 const BookingDetails = () => {
+  const place = useLoaderData();
+  const { image_url, location } = place;
   return (
     <div>
       <div>
-        <Cover></Cover>
+        <Cover place={place}></Cover>
       </div>
       <div className="flex w-9/12 mx-auto mt-10">
         <div className="w-2/3">
-          <Description></Description>
+          <Description place={place}></Description>
         </div>
         <div className="w-1/3 flex justify-center">
           <Reserve></Reserve>

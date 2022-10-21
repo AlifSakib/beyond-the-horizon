@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    loader: () => fetch("http://localhost:5000/places"),
+    loader: () => fetch("https://beyond-the-horizon-server.vercel.app/places"),
     children: [
       {
         path: "/",
@@ -20,12 +20,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/bookingDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookingDetails/${params.id}`),
+          fetch(
+            `https://beyond-the-horizon-server.vercel.app/bookingDetails/${params.id}`
+          ),
         element: <BookingDetails></BookingDetails>,
       },
       {
@@ -34,7 +40,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/payment",
-        loader: () => fetch("http://localhost:5000/hotels"),
+        loader: () =>
+          fetch("https://beyond-the-horizon-server.vercel.app/hotels"),
         element: (
           <PrivateRoutes>
             <Payment></Payment>

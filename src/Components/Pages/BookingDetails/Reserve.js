@@ -42,7 +42,8 @@ const Reserve = ({ place }) => {
             </span>
           </div>
           <input
-            value={location}
+            defaultValue="Saint Martin's"
+            // value={location}
             type="text"
             name="text"
             className="block w-96 border border-violet-400 focu bg-white rounded text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"

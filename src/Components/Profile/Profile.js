@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/UserContext";
 
 const Profile = () => {
   const [photo, setPhoto] = useState("");
-  console.log(photo);
+
   const { user, updateUserDetails } = useContext(AuthContext);
   console.log(user);
 
@@ -17,6 +17,7 @@ const Profile = () => {
 
     updateUserDetails(profile);
   };
+  console.log(photo);
 
   return (
     <div className="flex justify-center items-center flex-col">

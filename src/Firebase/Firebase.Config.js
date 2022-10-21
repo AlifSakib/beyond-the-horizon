@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCZfrHn7w8931t2yHX_KAzBwRWQ8-Sni-k",
-  authDomain: "beyond-the-horizon-719a1.firebaseapp.com",
-  projectId: "beyond-the-horizon-719a1",
-  storageBucket: "beyond-the-horizon-719a1.appspot.com",
-  messagingSenderId: "327378072315",
-  appId: "1:327378072315:web:de6fd73ae0bc63b432b65e",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

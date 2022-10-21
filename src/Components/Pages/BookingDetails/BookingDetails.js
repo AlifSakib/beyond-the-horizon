@@ -12,12 +12,14 @@ const BookingDetails = () => {
       <div>
         <Cover place={place}></Cover>
       </div>
-      <div className="flex w-9/12 mx-auto mt-10">
-        <div className="w-2/3">
-          <Description place={place}></Description>
-        </div>
-        <div className="w-1/3 flex justify-center">
-          <Reserve></Reserve>
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div className="grid gap-5 row-gap-8 lg:grid-cols-2">
+          <div className="">
+            <Description place={place}></Description>
+          </div>
+          <div className="">
+            <Reserve place={place}></Reserve>
+          </div>
         </div>
       </div>
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -51,9 +53,9 @@ const BookingDetails = () => {
                   height="24"
                 />
               </svg>
-              <span className="relative">The</span>
+              <span className="relative">We</span>
             </span>{" "}
-            We ensure your security and mental satisfaction
+            ensure your security and mental satisfaction
           </h2>
         </div>
         <div className="relative grid gap-8 row-gap-5 mb-8 md:row-gap-8 lg:grid-cols-4 sm:grid-cols-2">

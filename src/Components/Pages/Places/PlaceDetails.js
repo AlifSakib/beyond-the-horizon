@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { PlacesContext } from "../../../Layout/Root";
 import Place from "./Place";
 const PlaceDetails = () => {
-  const navigate = useNavigate();
-  const handleBooking = () => {
-    navigate("/bookingDetails");
-  };
   const places = useContext(PlacesContext);
 
   return (

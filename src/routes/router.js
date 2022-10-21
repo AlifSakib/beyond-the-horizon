@@ -34,6 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/payment",
+        loader: () => fetch("http://localhost:5000/hotels"),
         element: (
           <PrivateRoutes>
             <Payment></Payment>

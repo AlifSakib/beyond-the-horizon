@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image1 from "../assets/image-1.jpg";
 import image2 from "../assets/image-2.jpg";
 import image3 from "../assets/image-3.jpg";
@@ -64,14 +65,14 @@ export const Content = () => {
               </p>
             </div>
             <div>
-              <a
-                href="/"
+              <Link
+                to={`/bookingDetails/${"01"}`}
                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none rounded-full"
                 aria-label="Book Now"
                 title="Book Now"
               >
                 Book Now
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex items-center justify-center -mx-4 lg:pl-8">

@@ -1,30 +1,89 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import image1 from "./assets/image-1.jpeg";
-const Reserve = () => {
+import * as React from "react";
+
+import TextField from "@mui/material/TextField";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useNavigate } from "react-router-dom";
+
+const Reserve = ({ place }) => {
+  const { location } = place;
+  const [value, setValue] = React.useState(null);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/payment");
+  };
+
   return (
-    <div class="max-w-xs overflow-hidden  text-gray-800 rounded-lg  shadow-2xl dark:bg-gray-800">
-      <div class="px-4 py-2">
-        <h1 class="text-3xl font-bold  uppercase dark:text-white">
-          Beach House
-        </h1>
-        <p class="  text-sm  dark:text-gray-400 mt-3">
-          We give you the best payment experience with 100% security
-        </p>
-      </div>
-
-      <img class="object-cover w-full h-48 mt-2" src={image1} alt="NIKE AIR" />
-
-      <div class="flex items-center justify-between px-4 py-2">
-        <h1 class="text-lg font-bold ">
-          $129<span className="font-normal text-gray-600">/night</span>
-        </h1>
-        <Link to="/payment">
-          <button class="px-6 py-2 text-xs font-semibold  uppercase transition-colors duration-300 transform  rounded bg-violet-700 text-white ">
-            Reserve
-          </button>
-        </Link>
-      </div>
+    <div className=" py-6 rounded-md border-2 border-violet-600">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center space-y-6 text-sm"
+        action=""
+      >
+        <label className="">
+          <div className="flex justify-between">
+            <span className="text-gray-700 dark:text-neutral-200 text-start">
+              Origin
+            </span>
+          </div>
+          <input
+            type="text"
+            name="text"
+            className="block w-96 border border-violet-400 focu bg-white rounded text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
+            placeholder="Where you from ?"
+          />
+        </label>
+        <label className="">
+          <div className="flex justify-between">
+            <span className="text-gray-700 dark:text-neutral-200 text-start">
+              Destination
+            </span>
+          </div>
+          <input
+            value={location}
+            type="text"
+            name="text"
+            className="block w-96 border border-violet-400 focu bg-white rounded text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
+            placeholder="Type you destination"
+          />
+        </label>
+        <div className="flex justify-between w-96">
+          <div className="w-44 ">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="From"
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+          </div>
+          <div className="w-44">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="To"
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+          </div>
+        </div>
+        <button
+          className=" bg-violet-700 relative h-auto inline-flex items-center justify-center rounded transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 
+            text-white w-96 hover:bg-green-500 
+            "
+          type="submit"
+        >
+          Start Booking
+        </button>
+      </form>
     </div>
   );
 };

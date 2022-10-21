@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Profile = () => {
+  const [photo, setPhoto] = useState("");
+  console.log(photo);
+  const { user, updateUserDetails } = useContext(AuthContext);
+  console.log(user);
+
+  const profile = { photoURL: photo };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const photoUrl = form.photo_url.value;
+    setPhoto(photoUrl);
+
+    updateUserDetails(profile);
+  };
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center flex-col">
       <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
         <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
           <img
-            src="https://source.unsplash.com/100x100/?portrait?1"
+            src={user.photoURL}
             alt=""
             className="object-cover object-center w-full h-full rounded dark:bg-gray-500"
           />
         </div>
         <div className="flex flex-col space-y-4">
           <div>
-            <h2 className="text-2xl font-semibold">Leroy Jenkins</h2>
+            <h2 className="text-2xl font-semibold">{user.displayName}</h2>
             <span className="text-sm dark:text-gray-400">General manager</span>
           </div>
           <div className="space-y-1">
@@ -29,9 +46,7 @@ const Profile = () => {
                   d="M274.6,25.623a32.006,32.006,0,0,0-37.2,0L16,183.766V496H496V183.766ZM464,402.693,339.97,322.96,464,226.492ZM256,51.662,454.429,193.4,311.434,304.615,256,268.979l-55.434,35.636L57.571,193.4ZM48,226.492,172.03,322.96,48,402.693ZM464,464H48V440.735L256,307.021,464,440.735Z"
                 ></path>
               </svg>
-              <span className="dark:text-gray-400">
-                leroy.jenkins@company.com
-              </span>
+              <span className="dark:text-gray-400">{user.email}</span>
             </span>
             <span className="flex items-center space-x-2">
               <svg
@@ -49,6 +64,50 @@ const Profile = () => {
             </span>
           </div>
         </div>
+      </div>
+      <div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center space-y-6 text-sm"
+          action=""
+        >
+          <label className="">
+            <div className="flex justify-between">
+              <span className="text-gray-700 dark:text-neutral-200 text-start">
+                Email
+              </span>
+            </div>
+            <input
+              disabled
+              value={user.email}
+              type="email"
+              name="email"
+              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
+              placeholder="example@example.com"
+            />
+          </label>
+          <label className="">
+            <div className="flex justify-between">
+              <span className="text-gray-700 dark:text-neutral-200 text-start">
+                Photo Url
+              </span>
+            </div>
+            <input
+              type="text"
+              name="photo_url"
+              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
+              placeholder="example@example.com"
+            />
+          </label>
+          <button
+            className=" bg-blue-700 relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 
+            text-white w-96 hover:bg-green-500 
+            "
+            type="submit"
+          >
+            Update Profile
+          </button>
+        </form>
       </div>
     </div>
   );

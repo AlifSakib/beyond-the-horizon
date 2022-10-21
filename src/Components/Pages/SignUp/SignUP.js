@@ -1,22 +1,42 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserContext";
 const SignUP = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserDetails, verifyEmail } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handlSubmit = (e) => {
     e.preventDefault();
 
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const profile = { displayName: name };
 
     createUser(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        verifyEmail()
+          .then(() => {
+            toast.success("Verification Email Sent!");
+            console.log("verification Email Send");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+        updateUserDetails(profile)
+          .then((result) => {
+            const user = result.user;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
         navigate("/");
         // ...
       })
@@ -63,6 +83,17 @@ const SignUP = () => {
           className="flex flex-col items-center space-y-6 text-sm"
           action=""
         >
+          <label className="">
+            <span className="text-gray-700 dark:text-neutral-200 text-start">
+              Name
+            </span>
+            <input
+              type="text"
+              name="name"
+              className="block w-96 border border-blue-200 focu bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1 outline-none"
+              placeholder="Your Name"
+            />
+          </label>
           <label className="">
             <span className="text-gray-700 dark:text-neutral-200 text-start">
               Email address

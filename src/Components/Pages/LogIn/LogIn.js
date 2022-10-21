@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserContext";
@@ -19,7 +20,12 @@ const LogIn = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        navigate(from, { replace: true });
+        if (user.emailVerified === true) {
+          navigate(from, { replace: true });
+        } else {
+          toast.error("Please Verify Your Email , Thank You !");
+        }
+
         // ...
       })
       .catch((error) => {

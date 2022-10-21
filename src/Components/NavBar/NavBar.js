@@ -47,23 +47,23 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/booking"
+                to="/Profile"
                 aria-label="Our product"
                 title="Our product"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
-                Booking Review
+                Profile
               </Link>
             </li>
             <li>
-              <a
-                href="/"
+              <Link
+                to="/pricing"
                 aria-label="Product pricing"
                 title="Product pricing"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
                 Pricing
-              </a>
+              </Link>
             </li>
             {user && (
               <li>
@@ -73,7 +73,24 @@ const Header = () => {
                   title="About us"
                   className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
-                  {user.email}
+                  <div className="flex justify-center items-center space-x-6 text-pink-500">
+                    <div>{user.displayName}</div>
+
+                    <div class="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
+                      <svg
+                        class="absolute -left-1 w-12 h-12 text-gray-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
                 </a>
               </li>
             )}

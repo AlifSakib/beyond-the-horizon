@@ -1,23 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Profile = () => {
-  const [photo, setPhoto] = useState("");
-
   const { user, updateUserDetails } = useContext(AuthContext);
-  console.log(user);
-
-  const profile = { photoURL: photo };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const photoUrl = form.photo_url.value;
-    setPhoto(photoUrl);
 
-    updateUserDetails(profile);
+    updateUserDetails({ photoURL: photoUrl });
   };
-  console.log(photo);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+  console.log(user);
 
   return (
     <div className="flex justify-center items-center flex-col">

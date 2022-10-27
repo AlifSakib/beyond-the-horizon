@@ -7,8 +7,8 @@ const Profile = () => {
     e.preventDefault();
     const form = e.target;
     const photoUrl = form.photo_url.value;
-
     updateUserDetails({ photoURL: photoUrl });
+    window.location.reload(false);
   };
 
   useEffect(() => {

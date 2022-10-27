@@ -4,7 +4,7 @@ import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserContext";
 const SignUP = () => {
-  const { createUser, updateUserDetails, verifyEmail } =
+  const { createUser, updateUserDetails, verifyEmail, logOutUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const handlSubmit = (e) => {
@@ -20,24 +20,23 @@ const SignUP = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+
         console.log(user);
         verifyEmail()
           .then(() => {
+            logOutUser();
+            // navigate("/");
             toast.success("Verification Email Sent!");
-            console.log("verification Email Send");
           })
           .catch((error) => {
             console.error(error);
           });
         updateUserDetails(profile)
-          .then((result) => {
-            const user = result.user;
-          })
+          .then((result) => {})
           .catch((error) => {
             console.error(error);
           });
 
-        navigate("/");
         // ...
       })
       .catch((error) => {

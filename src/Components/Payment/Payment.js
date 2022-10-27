@@ -1,10 +1,11 @@
 import React from "react";
 import toast from "react-hot-toast";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useLoaderData } from "react-router-dom";
 import Hotels from "../Pages/Hotels/Hotels";
-import image from "./image 1.png";
 
 const Payment = () => {
+  const position = [23.75, 90.44];
   const hotels = useLoaderData();
   const handleConfirm = () => {
     toast.success("Payment Successfull");
@@ -18,11 +19,25 @@ const Payment = () => {
           ))}
         </div>
         <div>
-          <img
-            className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-            src={image}
-            alt=""
-          />
+          <div>
+            <MapContainer
+              className="h-[350px]"
+              center={[23.750747, 90.4405]}
+              zoom={13}
+              scrollWheelZoom={true}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[23.750747, 90.4405]}>
+                <Popup>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+              </Marker>
+            </MapContainer>
+          </div>
+
           <div className="mt-10">
             <button
               onClick={handleConfirm}

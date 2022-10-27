@@ -30,15 +30,17 @@ const UserContext = ({ children }) => {
   };
 
   const updateUserDetails = (profile) => {
+    setLoading(true);
     return updateProfile(auth.currentUser, profile);
   };
 
   const verifyEmail = () => {
+    setLoading(true);
     return sendEmailVerification(auth.currentUser);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null || currentUser.emailVerified) {
+      if (currentUser === null || currentUser?.emailVerified) {
         setUser(currentUser);
       }
       setLoading(false);

@@ -4,13 +4,13 @@ import { FaFacebook, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserContext";
 const LogIn = () => {
-  const { logInUser, setLoading } = useContext(AuthContext);
+  const { user, logInUser, setLoading } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const handlSubmit = (e) => {
     e.preventDefault();
-
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -20,7 +20,9 @@ const LogIn = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        if (user.emailVerified === true) {
+
+        if (user?.emailVerified) {
+          console.log(user);
           navigate(from, { replace: true });
         } else {
           toast.error("Please Verify Your Email , Thank You !");
